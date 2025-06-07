@@ -1,15 +1,15 @@
 import 'dart:io';
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import '../models/nutrition_data.dart';
 
 class GeminiService {
   // Replace with your Gemini API key
-  static const String _apiKey = 'AIzaSyDA03b-S8vgq39n9Cq55VV64IhqcBEl94g';
+  final String? _apiKey = dotenv.env['GEMINI_API_KEY'];
 
   // ✅ Correct Gemini 1.5 Flash endpoint
-  static const String _apiUrl =
-      'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent';
+  final String? _apiUrl = dotenv.env['BASE_URL'];
 
   static const String _prompt = '''From this image, list the food items and provide estimated nutritional values (calories, protein, fat, carbs) per item.
 
